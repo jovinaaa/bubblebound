@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cdpevnxsin3cq"]
+
+[ext_resource type="PackedScene" uid="uid://bqgqougitb8x6" path="res://bubble.tscn" id="1_dopym"]
+[ext_resource type="Script" uid="uid://blcosg4ktkcdy" path="res://water.gd" id="2_ootpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjqgx"]
+size = Vector2(2083, 358)
+
+[node name="Level1" type="Node2D" unique_id=287162599]
+metadata/_edit_vertical_guides_ = [404.0]
+
+[node name="Bubble" parent="." unique_id=412239775 instance=ExtResource("1_dopym")]
+position = Vector2(200, 100)
+
+[node name="Water" type="Area2D" parent="." unique_id=1685820668]
+script = ExtResource("2_ootpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water" unique_id=1541603978]
+position = Vector2(463.5, 647)
+shape = SubResource("RectangleShape2D_bjqgx")
+
+[node name="ColorRect" type="ColorRect" parent="Water" unique_id=894754441]
+offset_left = -541.0
+offset_top = 456.0
+offset_right = 1613.0
+offset_bottom = 831.0
+color = Color(0.21960784, 0.5058824, 0.8156863, 0.8666667)
+
+[connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
